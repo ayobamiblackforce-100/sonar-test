@@ -35,5 +35,5 @@ jobs:
       
       - name: list directory content
         run: |
-          script.sh
+          pip install pip-audit
           

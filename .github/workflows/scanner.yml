@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  # build:
+  # SAST-scan:
   #   name: SAST with SONAR
   #   runs-on: ubuntu-latest
   #   steps:
@@ -25,7 +25,7 @@ jobs:
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  SCA:
+  SCA-scan:
     name: SCA
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +33,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       
-      - name: list directory content
+      - name: Run dependency scan
         run: |
           pip install pip-audit
           pip-audit -r requirements.txt > pip-audit-ouput.txt      

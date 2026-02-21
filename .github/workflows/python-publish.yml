@@ -7,17 +7,17 @@ on:
 
 
 jobs:
-  build:
-    name: SAST with SONAR
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  # build:
+  #   name: SAST with SONAR
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+  #     - uses: sonarsource/sonarqube-scan-action@master
+  #       env:
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           
 
       # - uses: sonarsource/sonarqube-quality-gate-action@master
@@ -34,6 +34,6 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - uses: lazy-actions/pip-audit-action@04cffd8029c904c84ca4ad13ad253f0fde43543f
       
-      - name: list directory content
-        run: |
-          ls $(pwd)
+      # - name: list directory content
+      #   run: |
+      #     ls $(pwd)

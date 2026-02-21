@@ -36,7 +36,7 @@ jobs:
       - name: Run dependency scan
         run: |
           pip install pip-audit
-          pip-audit -r requirements.txt --format html --output sca-report.json
+          pip-audit -r requirements.txt #--format html --output sca-report.json
 
   Debug:
     name: show report output

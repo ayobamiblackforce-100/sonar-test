@@ -37,9 +37,13 @@ jobs:
         run: |
           pip install pip-audit
           pip-audit -r requirements.txt > sca-report.txt || true
-          cat sca-report.txt
           
 
+      - name: Display sca-report
+        run: |
+          echo "$(cat sca-report.txt)"
+
+          
   # Debug:
   #   name: show report output
   #   needs: SCA-scan

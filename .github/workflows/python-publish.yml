@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: SAST with SONAR
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,9 +18,22 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
+          
+
       # - uses: sonarsource/sonarqube-quality-gate-action@master
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  SCA:
+    name: SCA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: lazy-actions/pip-audit-action@04cffd8029c904c84ca4ad13ad253f0fde43543f
+      
+      - name: list directory content
+        run: |
+          ls $(pwd)

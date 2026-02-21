@@ -37,5 +37,14 @@ jobs:
         run: |
           pip install pip-audit
           pip-audit -r requirements.txt > sca-report.txt
+
+  Debug:
+    name: show report output
+    needs: SCA-scan
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: print sca-scan result
+        run: |
           cat sca-report.txt
     

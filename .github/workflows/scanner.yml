@@ -31,7 +31,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      
+      - name: show info
+        run: |
+          echo $(hostname -i)
+          curl ifconfig.me
       - name: Run dependency scan
         run: |
           pip install pip-audit

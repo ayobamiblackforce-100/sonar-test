@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: show info
         run: |
-          echo $(hostname -i)
+          hostname -i
           curl ifconfig.me
       - name: Run dependency scan
         run: |
@@ -55,6 +55,7 @@ jobs:
           fetch-depth: 0 
           
       - name: run streamlit app
+        timeout-minutes: 1
         run: |
           pip install -r requirements.txt
           streamlit run app.py

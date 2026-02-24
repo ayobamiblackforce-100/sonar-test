@@ -40,7 +40,8 @@ jobs:
         run: |
           echo "************* Checking app Status *******************"
           echo ${{ steps.info_1.outputs.value }}
-          echo "$(curl ${{ steps.info_1.outputs.value }}:8501)"
+          python3 info.py
+          # echo "$(curl ${{ steps.info_1.outputs.value }}:8501)"
           # [[ "$(curl ${{ steps.info_1.outputs.value }}:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
           echo "************* Checking app Status *******************"
       

@@ -40,9 +40,7 @@ jobs:
         run: |
           echo "************* Checking app Status *******************"
           echo ${{ steps.info_1.outputs.value }}
-          python3 info.py
-          # echo "$(curl ${{ steps.info_1.outputs.value }}:8501)"
-          # [[ "$(curl ${{ steps.info_1.outputs.value }}:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
+          python3 info.py  
           echo "************* Checking app Status *******************"
       
       - name: Run dependency scan
@@ -67,7 +65,7 @@ jobs:
       - name: info
         id: info_1
         run: |
-          python3 info.py
+          python3 log.py
       
       - name: run streamlit app
         timeout-minutes: 1

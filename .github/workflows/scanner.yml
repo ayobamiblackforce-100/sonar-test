@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "************* Checking app Status *******************"
           echo ${{ steps.info_1.outputs.value }}
-          # [[ "$(curl ${{ steps.info_1.outputs.value }}:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
+          [[ "$(curl ${{ steps.info_1.outputs.value }}:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
           echo "************* Checking app Status *******************"
       
       - name: Run dependency scan

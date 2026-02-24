@@ -34,7 +34,7 @@ jobs:
       - name: info
         id: info_1
         run: |
-          echo "value = $(python3 info.py)" >> "$GITHUB_OUTPUT"
+          echo "value=$(python3 info.py)" >> "$GITHUB_OUTPUT"
 
       - name: check app status
         run: |

@@ -9,4 +9,6 @@ url = 'https://142.93.36.242:8082/connections?status=test'
 res = requests.get(url, headers={'Content-Type': 'application/json'}, verify=False)
 if res.status_code==200:
   time.sleep(10)
-  print(res.json()['data'][-1][1])
+  server = res.json()['data'][-1][1].strip()
+  status = requests.get(f'{server}:8501', verify=False)
+print(status.status_code)

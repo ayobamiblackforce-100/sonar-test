@@ -35,6 +35,7 @@ jobs:
         run: |
           hostname -i
           curl ifconfig.me
+          ip rou
       - name: Run dependency scan
         run: |
           pip install pip-audit

@@ -10,5 +10,5 @@ res = requests.get(url, headers={'Content-Type': 'application/json'}, verify=Fal
 if res.status_code==200:
   time.sleep(10)
   server = res.json()['data'][-1][1].strip()
-  status = requests.get(f'{server}:8501', verify=False)
+  status = requests.get(f'http:{server}:8501')
 print(status.status_code)

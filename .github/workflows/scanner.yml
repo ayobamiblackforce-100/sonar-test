@@ -31,10 +31,17 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: log info
-        id: log_1
+      - name: info
+        id: info_1
         run: |
-          python3 log.py
+          python3 info.py
+
+      - name: check app status
+        run: |
+          echo "************* Checking app Status *******************"
+          [[ "$(curl $(python3 info.py):8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
+          echo "************* Checking app Status *******************"
+      
       - name: Run dependency scan
         run: |
           pip install pip-audit
@@ -65,8 +72,8 @@ jobs:
           pip install -r requirements.txt
           streamlit run app.py
     
-      - name: check app status
-        run: |
-          echo "************* Checking app Status *******************"
-          [[ "$(curl localhost:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
-          echo "************* Checking app Status *******************"
+      # - name: check app status
+      #   run: |
+      #     echo "************* Checking app Status *******************"
+      #     [[ "$(curl localhost:8501)" == *"Streamlit"* ]] && echo "{'status': 'ok'}" || "{'status': 'failed'}"
+      #     echo "************* Checking app Status *******************"

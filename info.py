@@ -11,4 +11,4 @@ if res.status_code==200:
   time.sleep(10)
   server = res.json()['data'][-1][1].strip()
   status = requests.get(f'http://{server}:8501')
-print(status.status_code)
+  print(status.status_code)
